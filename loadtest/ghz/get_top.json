@@ -1,0 +1,11 @@
+{
+  "proto": "proto/search_trends/v1/search_trends.proto",
+  "call": "search_trends.v1.SearchTrendsService.GetTop",
+  "data": {
+    "limit": 10
+  },
+  "connections": 50,
+  "concurrency": 200,
+  "total": 100000,
+  "insecure": true
+}

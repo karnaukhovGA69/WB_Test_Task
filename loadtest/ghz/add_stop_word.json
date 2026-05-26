@@ -1,0 +1,11 @@
+{
+  "proto": "proto/search_trends/v1/search_trends.proto",
+  "call": "search_trends.v1.SearchTrendsService.AddStopWord",
+  "data": {
+    "word": "loadtest-stop-word"
+  },
+  "connections": 5,
+  "concurrency": 10,
+  "total": 1000,
+  "insecure": true
+}

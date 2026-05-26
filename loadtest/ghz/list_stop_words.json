@@ -1,0 +1,9 @@
+{
+  "proto": "proto/search_trends/v1/search_trends.proto",
+  "call": "search_trends.v1.SearchTrendsService.ListStopWords",
+  "data": {},
+  "connections": 10,
+  "concurrency": 50,
+  "total": 10000,
+  "insecure": true
+}

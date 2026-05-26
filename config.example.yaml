@@ -1,0 +1,44 @@
+app:
+  env: local
+  shutdown_timeout: 10s
+
+server:
+  grpc_addr: ":9090"
+
+metrics:
+  host: "0.0.0.0"
+  port: 2112
+  path: "/metrics"
+
+kafka:
+  brokers:
+    - "localhost:9092"
+  topic: "search-events"
+  group_id: "search-trends-service"
+  client_id: "search-trends-service"
+  min_bytes: 1
+  max_bytes: 10485760
+  max_wait_ms: 1000
+  commit_interval_ms: 0
+  start_offset: "latest"
+  commit_retries: 3
+  retry_backoff: 500ms
+
+aggregator:
+  window: 5m
+  bucket_size: 1s
+  default_limit: 10
+  max_limit: 100
+  top_refresh_interval: 500ms
+  max_query_runes: 256
+  allowed_future_skew: 5s
+
+stoplist:
+  initial_words:
+    - "test"
+    - "spam"
+
+antispam:
+  enabled: true
+  max_events_per_identity_per_minute: 120
+  max_same_query_per_identity_per_window: 10

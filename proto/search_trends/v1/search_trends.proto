@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package search_trends.v1;
+
+option go_package = "github.com/wb-test-task/search-trends/proto/search_trends/v1;searchtrendspb";
+
+import "google/protobuf/timestamp.proto";
+
+service SearchTrendsService {
+  rpc GetTop(GetTopRequest) returns (GetTopResponse);
+  rpc AddStopWord(StopWordRequest) returns (StopWordResponse);
+  rpc RemoveStopWord(StopWordRequest) returns (StopWordResponse);
+  rpc ListStopWords(ListStopWordsRequest) returns (ListStopWordsResponse);
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
+}
+
+message GetTopRequest {
+  uint32 limit = 1;
+}
+
+message GetTopResponse {
+  repeated TopItem items = 1;
+  google.protobuf.Timestamp generated_at = 2;
+  uint32 window_seconds = 3;
+}
+
+message TopItem {
+  string query = 1;
+  uint64 count = 2;
+}
+
+message StopWordRequest {
+  string word = 1;
+}
+
+message StopWordResponse {
+  string word = 1;
+  bool applied = 2;
+  string message = 3;
+}
+
+message ListStopWordsRequest {}
+
+message ListStopWordsResponse {
+  repeated string words = 1;
+}
+
+message HealthCheckRequest {}
+
+message HealthCheckResponse {
+  string status = 1;
+  google.protobuf.Timestamp checked_at = 2;
+}
